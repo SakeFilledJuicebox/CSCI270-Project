@@ -1,0 +1,57 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bp3ouv6dad1vh"]
+
+[ext_resource type="FontFile" uid="uid://bbec7ohwgiy7r" path="res://resources/Lambda-mLv6V.ttf" id="1_a3ygm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke8ab"]
+bg_color = Color(0.682353, 0.905882, 0.65098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rwfn"]
+bg_color = Color(0.427451, 0.8, 0.54902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6365y"]
+bg_color = Color(0.682353, 0.905882, 0.65098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t564m"]
+bg_color = Color(0.427451, 0.8, 0.54902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqgwg"]
+bg_color = Color(0.215686, 0.411765, 0.282353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7ajk"]
+bg_color = Color(0.0980392, 0.545098, 0.662745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2v75"]
+bg_color = Color(0.160784, 0.313726, 0.584314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnxr6"]
+bg_color = Color(0.721569, 0.713726, 0.592157, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nofd0"]
+bg_color = Color(1, 0.992157, 0.815686, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[resource]
+default_font = ExtResource("1_a3ygm")
+default_font_size = 32
+Button/colors/font_color = Color(1, 0.992157, 0.815686, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_ke8ab")
+Button/styles/focus = SubResource("StyleBoxFlat_7rwfn")
+Button/styles/hover = SubResource("StyleBoxFlat_6365y")
+Button/styles/normal = SubResource("StyleBoxFlat_t564m")
+Button/styles/pressed = SubResource("StyleBoxFlat_mqgwg")
+Label/colors/font_color = Color(1, 0.992157, 0.815686, 1)
+LineEdit/colors/font_color = Color(1, 0.992157, 0.815686, 1)
+LineEdit/colors/selection_color = Color(0.682353, 0.905882, 0.65098, 1)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_i7ajk")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_m2v75")
+VBoxContainer/constants/separation = 18
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_nnxr6")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nofd0")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_nnxr6")

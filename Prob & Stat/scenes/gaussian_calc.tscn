@@ -1,0 +1,186 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxvdsiui225xx"]
+
+[ext_resource type="Theme" uid="uid://bp3ouv6dad1vh" path="res://resources/theme.tres" id="1_ivv6x"]
+[ext_resource type="Script" path="res://scripts/gaussian_calc.gd" id="2_gh8bl"]
+[ext_resource type="Script" path="res://scripts/line_edit.gd" id="3_jstge"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_r1kdx"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_ebed7"]
+events = [SubResource("InputEventKey_r1kdx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_e4qan"]
+device = -1
+keycode = 4194325
+
+[sub_resource type="Shortcut" id="Shortcut_ybut0"]
+events = [SubResource("InputEventKey_e4qan")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkmyt"]
+bg_color = Color(0.898039, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj40k"]
+bg_color = Color(0.9, 0.513, 0.54525, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqqgx"]
+bg_color = Color(0.419608, 0.152941, 0.211765, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_fb6ib"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_i7s6i"]
+events = [SubResource("InputEventKey_fb6ib")]
+
+[node name="GaussianCalc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ivv6x")
+script = ExtResource("2_gh8bl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435294, 0.564706, 0.956863, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -60.0
+offset_right = 138.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="GenerateButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_ebed7")
+text = "Generate"
+
+[node name="UniformButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_ybut0")
+text = "Uniform"
+
+[node name="ExitButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkmyt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vj40k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mqqgx")
+shortcut = SubResource("Shortcut_i7s6i")
+text = "Exit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -160.5
+offset_right = 145.5
+offset_bottom = 160.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SamplesLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "# of Samples"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SamplesLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_jstge")
+
+[node name="GaussianContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+columns = 3
+
+[node name="MeanLabel" type="Label" parent="VBoxContainer/GaussianContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mean"
+
+[node name="SDLabel" type="Label" parent="VBoxContainer/GaussianContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Std. Dev."
+horizontal_alignment = 1
+
+[node name="SigLabel" type="Label" parent="VBoxContainer/GaussianContainer"]
+layout_mode = 2
+text = "Sig. Fig."
+
+[node name="MeanLineEdit" type="LineEdit" parent="VBoxContainer/GaussianContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+alignment = 1
+script = ExtResource("3_jstge")
+
+[node name="SDLineEdit" type="LineEdit" parent="VBoxContainer/GaussianContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+alignment = 1
+script = ExtResource("3_jstge")
+
+[node name="SigLineEdit" type="LineEdit" parent="VBoxContainer/GaussianContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_jstge")
+
+[node name="ObservationsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "# of Observations"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ObservationsLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_jstge")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 216.5
+offset_right = 423.5
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "CSCI 270 Project"
+
+[connection signal="pressed" from="HBoxContainer/GenerateButton" to="." method="_on_generate_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/UniformButton" to="." method="_on_uniform_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer/SamplesLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/SamplesLineEdit" to="VBoxContainer/SamplesLineEdit" method="_on_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/GaussianContainer/MeanLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/GaussianContainer/MeanLineEdit" to="VBoxContainer/GaussianContainer/MeanLineEdit" method="_on_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/GaussianContainer/SDLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/GaussianContainer/SDLineEdit" to="VBoxContainer/GaussianContainer/SDLineEdit" method="_on_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/GaussianContainer/SigLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/GaussianContainer/SigLineEdit" to="VBoxContainer/GaussianContainer/SigLineEdit" method="_on_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/ObservationsLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/ObservationsLineEdit" to="VBoxContainer/ObservationsLineEdit" method="_on_text_changed"]

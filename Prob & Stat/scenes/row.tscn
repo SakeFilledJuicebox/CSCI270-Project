@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://jwdbaov1qjwj"]
+
+[ext_resource type="Script" path="res://scripts/row.gd" id="1_m5xjs"]
+
+[node name="Row" type="Label"]
+custom_minimum_size = Vector2(10, 0)
+offset_right = 10.0
+offset_bottom = 26.0
+text = "0"
+script = ExtResource("1_m5xjs")

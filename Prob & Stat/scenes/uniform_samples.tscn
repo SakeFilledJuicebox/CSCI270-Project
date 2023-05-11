@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm4401qrgu0sa"]
+
+[ext_resource type="Theme" uid="uid://bp3ouv6dad1vh" path="res://resources/theme.tres" id="1_3w1j7"]
+[ext_resource type="Script" path="res://scripts/uniform_samples.gd" id="2_8ddiy"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_r1kdx"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_w0qc3"]
+events = [SubResource("InputEventKey_r1kdx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_fb6ib"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_7ao5d"]
+events = [SubResource("InputEventKey_fb6ib")]
+
+[node name="Numbers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3w1j7")
+script = ExtResource("2_8ddiy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435294, 0.564706, 0.956863, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 312.0
+offset_bottom = 56.0
+text = "Uniform Samples"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 368.0
+offset_bottom = 412.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 64.0
+offset_right = 625.0
+offset_bottom = 293.0
+
+[node name="CLTLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "According to CLT"
+
+[node name="CLTMSDLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "x̄ ≈ N("
+
+[node name="SampleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Empirical Results"
+
+[node name="SampleMSDLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 336.0
+offset_right = 576.0
+offset_bottom = 428.0
+
+[node name="CopyButton" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_w0qc3")
+text = "Copy"
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_7ao5d")
+text = "Return"
+
+[connection signal="pressed" from="VBoxContainer2/CopyButton" to="." method="_on_copy_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/ReturnButton" to="." method="_on_return_button_pressed"]

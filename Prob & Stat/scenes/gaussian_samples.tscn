@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://bde5x68mj00y5"]
+
+[ext_resource type="Theme" uid="uid://bp3ouv6dad1vh" path="res://resources/theme.tres" id="1_3pjki"]
+[ext_resource type="Script" path="res://scripts/gaussian_samples.gd" id="2_cf2qb"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_r1kdx"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_12dyy"]
+events = [SubResource("InputEventKey_r1kdx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_fb6ib"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_didfy"]
+events = [SubResource("InputEventKey_fb6ib")]
+
+[node name="GaussianSamples" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3pjki")
+script = ExtResource("2_cf2qb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435294, 0.564706, 0.956863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 368.0
+offset_right = 576.0
+offset_bottom = 460.0
+
+[node name="CopyButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_12dyy")
+text = "Copy"
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_didfy")
+text = "Return"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 368.0
+offset_bottom = 448.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 312.0
+offset_bottom = 56.0
+text = "Gaussian  Samples"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 64.0
+offset_right = 625.0
+offset_bottom = 293.0
+
+[node name="CLTLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "According to CLT"
+
+[node name="CLTMSDLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="SampleLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Empirical Results"
+
+[node name="SampleMSDLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/CopyButton" to="." method="_on_copy_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
